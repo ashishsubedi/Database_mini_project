@@ -12,35 +12,27 @@
 
     <div class="container">
         <h2>Admin</h2>
-        <p>Moderate Employees</p>
-
+        <p>Moderate Products</p>
         <div class="row">
             <div class='col-sm-6'>
 
                 <form class="form-inline ml-auto">
                     <div class="md-form my-0">
-                        <input class="form-control" type="text" placeholder="Search Employees"
-                            aria-label="Search Employees">
+                        <input class="form-control" type="text" placeholder="Search Products"
+                            aria-label="Search Products">
                     </div>
                     <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit">Search</button>
                 </form>
 
             </div>
-            <div class='col-sm-2'>
+            <div class='col-sm-3'>
                 <button class="btn btn-primary" type="submit" style="margin-left:5px">
-                    Add Employee
+                    Add Product
                 </button>
             </div>
-            <div class='col-sm-2'>
+            <div class='col-sm-3'>
                 <a href="" class="btn btn-primary" type="submit" style="margin-left:5px">
-                    Products
-                </a>
-            </div>
-            <div class='col-sm-2'>
-                <a href="/admin/logout">
-                    <button class="btn btn-danger" type="submit" style="margin-left:5px">
-                        Logout
-                    </button>
+                    Employees
                 </a>
             </div>
         </div>
@@ -48,44 +40,38 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Employee Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email Id</th>
-                    <th>Designation</th>
-                    <th>Joining Date</th>
-                    <th>Salary</th>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Number in Stock</th>
+                    <th>Brand Name</th>
+                    <th>Price</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>HR1563784025</td>
-                    <td>Haldi</td>
-                    <td>Ram</td>
-                    <td>haldiram@gmail.com</td>
-                    <td>Product Manager</td>
-                    <td>07-22-2019</td>
-                    <td>Rs 85000</td>
+                    <td>SM-G973F</td>
+                    <td>Galaxy S10 (Exynos 9820)</td>
+                    <td>Mobile</td>
+                    <td>100</td>
+                    <td>Samsung</td>
+                    <td>Rs. 88000</td>
                     <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
                             Remove
                         </button></td>
-
                 </tr>
                 <tr>
-                    <td>RR1563784029</td>
-                    <td>Ram</td>
-                    <td>Raja</td>
-                    <td>rajaram@gmail.com</td>
-                    <td>Sales Manager</td>
-                    <td>07-28-2019</td>
-                    <td>Rs 58000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
-
-                </tr>
-
+                        <td>SM-G973U</td>
+                        <td>Galaxy S10 (Snapdragon 855)</td>
+                        <td>Mobile</td>
+                        <td>500</td>
+                        <td>Samsung</td>
+                        <td>Rs. 86000</td>
+                        <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
+                                Remove
+                            </button></td>
+                    </tr>
 
             </tbody>
         </table>

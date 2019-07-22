@@ -9,6 +9,8 @@
   "author": "Ashish Subedi",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "mysql": "^2.17.1"
