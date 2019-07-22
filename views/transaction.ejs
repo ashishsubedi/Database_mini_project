@@ -1,0 +1,107 @@
+<html>
+
+<head>
+  <title>TechStore</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" style="background-color:#009688">
+    <div class="container-fluid">
+      <a href='/'>
+        <div class="navbar-header" style="color:#ffffff">
+          <h1>TechStore</h1>
+        </div>
+      </a>
+      <div class="input-group-btn">
+        <button class="btn btn-primary" type="submit" style="margin-left:-50px">
+          LogOut
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 style="text-align: center; color: black">Total Amount: 23679</h1>
+      <!--Yesma total amount pachi number from database-->
+    </div>
+    <!--Yesma product id ra quantity submit gareko kura variable ma store gara-->
+    <form>
+      <div class="input-group">
+
+        <div class="row">
+          <div class="col-sm-6"><input type="text" class="form-control" placeholder="Product ID"></div>
+          <div class="col-sm-5"><input type="int" class="form-control" placeholder="Quantity"></div>
+        </div>
+
+
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" style="margin-left:-50px">
+            Submit
+          </button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+  <br>
+  <br>
+
+  <!--mathi ko variable ma store bhako kura anusar tala ko table ma data hala-->
+  <table class="table table-striped">
+    <thead>
+      <th style="text-align: center">Product name</th>
+      <th style="text-align: center">Quantity</th>
+      <th style="text-align: center">Amount per item</th>
+      <th style="text-align: center">Total Amount(Rs)</th>
+      </tr>
+    </thead>
+    <tbody style="text-align: center">
+      <tr>
+        <td>Samsung 2.5" SSD </td>
+        <td>1</td>
+        <td>8000</td>
+        <td>8000</td>
+      </tr>
+      <tr>
+        <td>Corsair Vengeance LPX 8GB DDR4 3000Mhz </td>
+        <td>2</td>
+        <td>7200</td>
+        <td>14400</td>
+      </tr>
+      <tr>
+        <td>Amkette Xcite Pro USB Keyboard </td>
+        <td>1</td>
+        <td>480</td>
+        <td>480</td>
+      </tr>
+      <tr>
+        <td>Logitech B170 Wireless Mouse </td>
+        <td>1</td>
+        <td>799</td>
+        <td>799</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
