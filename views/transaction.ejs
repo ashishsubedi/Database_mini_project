@@ -30,31 +30,41 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1 style="text-align: center; color: black">Total Amount: 23679</h1>
+      <h1 style="text-align: center; color: black" id="totalPriceDiv">Total Amount: <span id="totalPrice">0</span></h1>
       <!--Yesma total amount pachi number from database-->
+    </div>
+    <div class="input-group-btn">
+      <button class="btn btn-primary" type="button" name="createTransaction" id="createTransaction"
+        style="margin-left:-50px">
+        Create Transaction
+      </button>
     </div>
     <!--Yesma product id ra quantity submit gareko kura variable ma store gara-->
     <form>
       <div class="input-group">
 
         <div class="row">
-          <div class="col-sm-6"><input type="text" class="form-control" placeholder="Product ID"></div>
-          <div class="col-sm-5"><input type="int" class="form-control" placeholder="Quantity"></div>
+          <div class="col-sm-6"><input type="text" disabled class="form-control" name="productId" id="productId"
+              placeholder="Product ID"></div>
+          <div class="col-sm-5"><input type="int" disabled class="form-control" name="quantity" id="quantity"
+              placeholder="Quantity"></div>
         </div>
 
 
         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit" style="margin-left:-50px">
+          <button class="btn btn-default" type="button" name="submit" id="submit" style="margin-left:-50px">
             Submit
           </button>
         </div>
         <div class="input-group-btn">
-          <button class="btn btn-danger" type="submit" style="margin-left:2px">
+
+          <button class="btn btn-danger" type="button" name="reset" id="reset" style="margin-left:2px">
             Reset
           </button>
+
         </div>
         <div class="input-group-btn">
-          <button class="btn btn-primary" type="submit" style="margin-left:5px">
+          <button class="btn btn-primary" type="button" name="paid" id="paid" style="margin-left:5px">
             Paid
           </button>
         </div>
@@ -62,7 +72,11 @@
 
       </div>
     </form>
+    <div hidden id="storeId" name='storeId'>
 
+      <%= result.storeID %>
+    </div>
+    <div hidden id="saleId" name='saleId'></div>
   </div>
 
   <br>
@@ -77,31 +91,8 @@
       <th style="text-align: center">Total Amount(Rs)</th>
       </tr>
     </thead>
-    <tbody style="text-align: center">
-      <tr>
-        <td>Samsung 2.5" SSD </td>
-        <td>1</td>
-        <td>8000</td>
-        <td>8000</td>
-      </tr>
-      <tr>
-        <td>Corsair Vengeance LPX 8GB DDR4 3000Mhz </td>
-        <td>2</td>
-        <td>7200</td>
-        <td>14400</td>
-      </tr>
-      <tr>
-        <td>Amkette Xcite Pro USB Keyboard </td>
-        <td>1</td>
-        <td>480</td>
-        <td>480</td>
-      </tr>
-      <tr>
-        <td>Logitech B170 Wireless Mouse </td>
-        <td>1</td>
-        <td>799</td>
-        <td>799</td>
-      </tr>
+    <tbody id="table" style="text-align: center">
+
     </tbody>
   </table>
 
@@ -116,6 +107,127 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+
+  <script>
+    let totalPrice = 0;
+    $(document).ready(function () {
+
+      $("#createTransaction").click(function () {
+        //Fetch to handleSales route
+        const storeId = $('#storeId').text().trim();
+        console.log(storeId)
+
+        fetch('/employee/handleSale', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            storeId
+          })
+        })
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data);
+            if (data.status == 200) {
+              $('#productId').attr('disabled', false);
+              $('#quantity').attr('disabled', false);
+              $('#saleId').text(data.saleId);
+            }
+
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      });
+      //ON Success
+
+    })
+
+    $("#submit").click(function () {
+      const productId = $('#productId').val();
+      const quantity = $('#quantity').val();
+      const saleId = $('#saleId').text().trim();
+      // console.log(productId,quantity);
+      fetch('/employee/addToList', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          productId: productId,
+          quantity: quantity,
+          saleId: saleId
+        })
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          console.log("DATA: ", data.result);
+
+
+
+          for (var i = 0; i < data.result.length; i++) {
+            let quantity = parseFloat(data.result[i].quantity)
+            let price = parseFloat(data.result[i].price)
+            let total = quantity * price;
+            totalPrice += total;
+
+            console.log("QYQWYE", quantity, price, total)
+
+
+            console.log("TOTAL: ", total)
+            $('#table').append(`
+            <tr id="${data.result[i].product_id}">
+        <td>${data.result[i].name} </td>
+        <td>${data.result[i].quantity}</td>
+        <td>${data.result[i].price}</td>
+        <td>${total.toString()}</td>
+      </tr>
+              `)
+          }
+          $('#totalPrice').text(totalPrice);
+
+
+
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+    });
+
+    $('#reset').click(function () {
+      const products = [];
+      let childrenLength = $('#table').children().length;
+      let children = $('#table').children();
+
+      const saleId = $('#saleId').text().trim();
+      
+      console.log("CHILDREN: ",children)
+      for (var i = 0; i < childrenLength; i++) {
+        console.log("CHILDREN: ",children[i].id)
+        products.push(children[i].id);
+        fetch('/employee/reset', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            productId: children[i].id.toString(),
+            saleId: saleId.toString()
+          })
+        })
+          .then(resp => resp.json())
+          .then(data => {
+            if (data.status == 200)
+              $(`#${data.productId}`).remove();
+          })
+          .catch(err => { throw err })
+      }
+
+    });
+  </script>
 </body>
 
 </html>

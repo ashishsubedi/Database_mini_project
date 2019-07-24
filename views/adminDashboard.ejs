@@ -27,9 +27,11 @@
 
             </div>
             <div class='col-sm-2'>
-                <button class="btn btn-primary" type="submit" style="margin-left:5px">
-                    Add Employee
-                </button>
+
+                <a href="/admin/employee/add" class="btn btn-primary" type="submit" style="margin-left:5px">
+                    Add Employees
+                </a>
+
             </div>
             <div class='col-sm-2'>
                 <a href="" class="btn btn-primary" type="submit" style="margin-left:5px">
@@ -54,39 +56,38 @@
                     <th>Email Id</th>
                     <th>Designation</th>
                     <th>Joining Date</th>
+                    <th>Contact</th>
+
                     <th>Salary</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>HR1563784025</td>
-                    <td>Haldi</td>
-                    <td>Ram</td>
-                    <td>haldiram@gmail.com</td>
-                    <td>Product Manager</td>
-                    <td>07-22-2019</td>
-                    <td>Rs 85000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
 
-                </tr>
-                <tr>
-                    <td>RR1563784029</td>
-                    <td>Ram</td>
-                    <td>Raja</td>
-                    <td>rajaram@gmail.com</td>
-                    <td>Sales Manager</td>
-                    <td>07-28-2019</td>
-                    <td>Rs 58000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
 
+                <% if(result) { %>
+                <% for(var i=0; i < result.length; i++) { %>
+                <tr>
+                    <td><%= result[i].emp_id %></td>
+                    <td><%= result[i].fname %></td>
+                    <td><%= result[i].lname %></td>
+                    <td><%= result[i].emailAdd %></td>
+                    <td><%= result[i].designation %></td>
+                    <td><%= result[i].joiningDate %></td>
+                    <td><%= result[i].contactnum %></td>
+                    <td><%= result[i].salary %></td>
+
+                    <td>
+                        <form action="/admin/products/delete/<%= result[i].emp_id %>" method="post">
+                            <button class="btn btn-danger" type="submit" style="margin-left:5px">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
                 </tr>
 
-
+                <% } %>
+                <% } %>
             </tbody>
         </table>
     </div>

@@ -10,234 +10,102 @@
 
 <body>
 
-    <div class="container">
-        <h2>Admin</h2>
-        <p>Moderate Employees</p>
-        <div class="row">
-            <div class='col-sm-9'>
-
-                <form class="form-inline ml-auto">
-                    <div class="md-form my-0">
-                        <input class="form-control" type="text" placeholder="Search Employees"
-                            aria-label="Search Employees">
-                    </div>
-                    <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit">Search</button>
-                </form>
-
-            </div>
-            <div class='col-sm-3'>
-                <button class="btn btn-primary" type="submit" style="margin-left:5px">
-                    Add Employee
-                </button>
+    <nav class="navbar navbar-inverse" style="background-color:#009688">
+        <div class="container-fluid">
+            <div class="navbar-header" style="color:#ffffff">
+                <h1>TechStore</h1>
             </div>
         </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Employee Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email Id</th>
-                    <th>Designation</th>
-                    <th>Joining Date</th>
-                    <th>Salary</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>HR1563784025</td>
-                    <td>Haldi</td>
-                    <td>Ram</td>
-                    <td>haldiram@gmail.com</td>
-                    <td>Product Manager</td>
-                    <td>07-22-2019</td>
-                    <td>Rs 85000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
-
-                </tr>
-                <tr>
-                    <td>RR1563784029</td>
-                    <td>Ram</td>
-                    <td>Raja</td>
-                    <td>rajaram@gmail.com</td>
-                    <td>Sales Manager</td>
-                    <td>07-28-2019</td>
-                    <td>Rs 58000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
-
-                </tr>
+    </nav>
 
 
-            </tbody>
-        </table>
-    </div>
+    <!--Section: Contact v.2-->
+    <section class="mb-4">
 
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Add Products</h2>
+        <!--Section description-->
+        <div class="container">
+            <form action="/admin/products/add" method="POST">
+                <div class="row">
 
-
-
-    <script>
-        $(".disapprove").click(disapproveClicked);
-        $(".approve").click(approvedClicked);
-
-        function disapproveClicked(e) {
-            console.log("CLICKED");
-            var trIndex = $(this).closest('tr').index();
-            var tr = $(this).closest('tr');
-            var postId = $(this).closest('tr').find("#postId").text().trim();
-            $.post('/admin/disapprove/' + postId, (data) => {
-                console.log(tr);
-
-
-                console.log(data);
-                // tr.html(`
-                //     <td>
-                //             ${data.post.firstName}
-                //         </td>
-
-
-                //         <td>
-                //             ${data.post.lastName}
-
-
-                //         </td>
-                //         <td>
-                //                 ${data.post.userId}
-                //         </td>
-
-                //         <td>
-                //             <div id="postId">
-
-                //             ${data.post.id}
-
-                //             </div>
-                //         </td>
-                //         <td><a href="/profile/post/${data.post.id}">Here</a></td>
-
-
-                //         <td>
-                //                 ${data.post.status}
-
-                //         </td>
-
-
-
-                //         <td>
-                //             <input type="button" class="btn btn-success approve" value="Approve" id="approveBtn-${trIndex}">
-                //             <input type="button" value="Send to Moderation" class="btn btn-primary moderate" id="moderateBtn-${trIndex}">
-                //         </td>
-                //     `);
-            });
-        }
-
-
-    </script>
-    <script>
-        /* $("[id|='approveBtn']").click(function (e) {
-            console.log("CLICKED Approved");
-            var trIndex = $(this).closest('tr').index();
-            var tr = $(this).closest('tr');
-            var postId = $(this).closest('tr').find("#postId").text().trim();
-            $.post('/admin/approve/' + postId, (data) => {
-                console.log(data);
-                tr.html(`
-                    <td>
-                        ${data.post.firstName}
-                    </td>
- 
-                    <td>
-                        ${data.post.lastName}
- 
-                        
-                    </td>
-                    <td>
-                            ${data.post.userId}
-                    </td>
- 
-                    <td>
-                        <div id="postId">
- 
-                        ${data.post.id}
-                            
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="productId" name="productId" class="form-control">
+                            <label for="productId" class="">Product Id</label>
                         </div>
-                    </td>
-                    <td><a href="/profile/post/${data.post.id}">Here</a></td>
- 
- 
-                    <td>
-                            ${data.post.status}
-                    
-                    </td>
- 
- 
- 
-                    <td>     
-                        <input type="button" class="btn btn-danger" value="Disapprove" id="disapproveBtn-${trIndex}">
-                        <input type="button" value="Send to Moderation" class="btn btn-primary" id="moderateBtn-${trIndex}">
-                    </td>
-                `)
- 
-            });
-        }); */
+                        <br>
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Name</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
 
-        $(".approve").click(approvedClicked);
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="numInStock" name="numInStock" class="form-control">
+                            <label for="numInStock" class="">Number in Stock</label>
+                        </div>
+                        <br>
+                        <div class="md-form mb-0">
+                            <input type="text" class="form-control" id="price" name="price">
+                            <label for="price">Price</label>
+                        </div>
+                        <br>
 
-        $(".disapprove").click(disapproveClicked);
+                    </div>
+                    <div class="col-md-6">
 
-        function approvedClicked(e) {
-            console.log("CLICKED Approved");
-            var trIndex = $(this).closest('tr').index();
-            var tr = $(this).closest('tr');
-            var postId = $(this).closest('tr').find("#postId").text().trim();
-            $.post('/admin/approve/' + postId, (data) => {
-                console.log(data);
-                // tr.html(`
-                //         <td>
-                //             ${data.post.firstName}
-                //         </td>
+                        <div class="form-group">
 
-                //         <td>
-                //             ${data.post.lastName}
+                            <select class="form-control" id="category" name="category">
+                                <% for(var i=0; i < category.length; i++) { %>
+                                <option><%= category[i].name %></option>
+                                <% } %>
+                            </select>
+                            <label for="category">Category</label>
+                        </div>
+                        <div class="form-group">
+
+                            <select class="form-control" id="brandId" name="brandId">
+                                <% for(var i=0; i < brand.length; i++) { %>
+                                <option><%= brand[i].name %></option>
+                                <% } %>
+                            </select>
+                            <label for="brandId">BrandId</label>
+                        </div>
+                        <div class="row">
+
+                            <div class='col-sm-3'>
+                                <button class="btn btn-primary" type="submit" style="margin-left:5px">
+                                    Add
+                                </button>
+                            </div>
+                            <div class='col-sm-3'>
+                                <a href="/admin/products">
+
+                                    <button class="btn btn-primary" type="button" style="margin-left:5px">
+                                        Cancel
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--Grid column-->
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
 
 
-                //         </td>
-                //         <td>
-                //                 ${data.post.userId}
-                //         </td>
 
-                //         <td>
-                //             <div id="postId">
+    </section>
 
-                //             ${data.post.id}
-
-                //             </div>
-                //         </td>
-                //         <td><a href="/profile/post/${data.post.id}">Here</a></td>
-
-
-                //         <td>
-                //                 ${data.post.status}
-
-                //         </td>
-
-
-
-                //         <td>     
-                //             <input type="button" class="btn btn-danger disapprove" value="Disapprove" id="disapproveBtn-${trIndex}">
-                //             <input type="button" value="Send to Moderation" class="btn btn-primary moderate" id="moderateBtn-${trIndex}">
-                //         </td>
-                //     `)
-
-
-            });
-        }
-
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -13,4 +13,12 @@ const employeeController = require('../controller/employeeController');
 router.post('/login',employeeController.login);
 router.get('/',employeeLogin, employeeController.get);
 router.get('/logout',employeeLogin, employeeController.logout);
+
+
+router.post('/addToList', employeeController.addToList);
+router.post('/handleSale', employeeController.handleSale);
+router.post('/reset',employeeController.reset);
+
+
+
 module.exports = router;

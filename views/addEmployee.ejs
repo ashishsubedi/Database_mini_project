@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <title>TechStore</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse" style="background-color:#009688">
+        <div class="container-fluid">
+            <div class="navbar-header" style="color:#ffffff">
+                <h1>TechStore</h1>
+            </div>
+        </div>
+    </nav>
+
+
+    <!--Section: Contact v.2-->
+<section class="mb-4">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Add Employee</h2>
+    <!--Section description-->
+    
+
+    <div class="row">
+        <form action="/admin/employee/add" method="POST">
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="firstName" name="firstName" class="form-control">
+                            <label for="firstName" class="">First Name</label>
+                        </div>
+                        <br>
+                        <div class="md-form mb-0">
+                            <input type="text" id="lastName" name="lastName" class="form-control">
+                            <label for="lastName" class="">Last Name</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="Email" name="email" class="form-control">
+                            <label for="email" class="">Email</label>
+                        </div>
+                        <br>
+                        <div class="md-form mb-0">                            
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="exampleInputPassword1">Password</label>
+                        </div>
+                        <br>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <div class="form-group">
+                    
+                    <select class="form-control" id="exampleSelect1">
+                        <!-- <% for(var i=0; i < category.length; i++) { %>
+                            <option><%= category[i].name %></option>
+                        <% } %> -->
+                    </select>
+                    <label for="exampleSelect1">Designation</label>
+                  </div>
+<br>
+                  <div class="form-group">
+                    
+                    <input type="date">
+                    <label for="exampleSelect1">Joined Date</label>
+                  </div>
+                  
+                                   
+                <!--Grid row-->
+
+                <!--Grid row-->
+                
+                <!--Grid row-->
+
+                <!--Grid row-->
+                
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Submit</a>
+            </div>
+            <div class="status"></div>
+
+            <div class="row">
+
+                    <div class='col-sm-3'>
+                        <button class="btn btn-primary" type="submit" style="margin-left:5px">
+                            Add
+                        </button>
+                    </div>
+                    <div class='col-sm-3'>
+                        <button class="btn btn-primary" type="submit" style="margin-left:5px">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+        </div>
+        <!--Grid column-->
+    </form>
+
+
+        
+    </div>
+
+</section>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

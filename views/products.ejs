@@ -26,12 +26,14 @@
 
             </div>
             <div class='col-sm-3'>
-                <button class="btn btn-primary" type="submit" style="margin-left:5px">
-                    Add Product
-                </button>
+                <a href="/admin/products/add">
+                    <button class="btn btn-primary" type="submit" style="margin-left:5px">
+                        Add Product
+                    </button>
+                </a>
             </div>
             <div class='col-sm-3'>
-                <a href="" class="btn btn-primary" type="submit" style="margin-left:5px">
+                <a href="/admin/employees" class="btn btn-primary" type="submit" style="margin-left:5px">
                     Employees
                 </a>
             </div>
@@ -50,28 +52,29 @@
                 </tr>
             </thead>
             <tbody>
+
+                <% if(result) { %>
+                <% for(var i=0; i < result.length; i++) { %>
                 <tr>
-                    <td>SM-G973F</td>
-                    <td>Galaxy S10 (Exynos 9820)</td>
-                    <td>Mobile</td>
-                    <td>100</td>
-                    <td>Samsung</td>
-                    <td>Rs. 88000</td>
-                    <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
-                            Remove
-                        </button></td>
-                </tr>
-                <tr>
-                        <td>SM-G973U</td>
-                        <td>Galaxy S10 (Snapdragon 855)</td>
-                        <td>Mobile</td>
-                        <td>500</td>
-                        <td>Samsung</td>
-                        <td>Rs. 86000</td>
-                        <td><button class="btn btn-danger" type="submit" style="margin-left:5px">
+                    <td><%= result[i].product_id %></td>
+                    <td><%= result[i].name %></td>
+                    <td><%= result[i].categoryName %></td>
+                    <td><%= result[i].numinStock %></td>
+                    <td><%= result[i].brandID %></td>
+                    <td>Rs. <%= result[i].price %></td>
+                    <td>
+                        <form action="/admin/products/delete/<%= result[i].product_id %>" method="post">
+                            <button class="btn btn-danger" type="submit" style="margin-left:5px">
                                 Remove
-                            </button></td>
-                    </tr>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                <% } %>
+                <% } %>
+
+
 
             </tbody>
         </table>
